@@ -2067,8 +2067,6 @@
 						cElement('a',cElement('li',writeFormButtons),{textContent:'×'},function(){ if(confirm('작성하신 내용이 손실됩니다.\n\n계속하시겠습니까?')) removeElement(writeForm); });
 
 				for(var i=(target = writeBody.querySelector('form#write').querySelectorAll('input[type="hidden"]')).length;i--;) {
-					if(target[i].name == 'Sijosae')
-						target[i].name = 'sijosae';
 					cElement('input',writeInfoDiv,{type:'hidden',name:target[i].name,value:target[i].value});
 				}
 				
@@ -2104,8 +2102,7 @@
 						var minorCaptcha = '';
 						if(MODE.minor) {
 							minorCaptcha = ''
-							+ '&' + 'kcaptcha_type=' + $('input[name="kcaptcha_admin"]').value
-							+ '&' + 'sijosae=' + $('input[name="sijosae"]').value;
+							+ '&' + 'kcaptcha_type=' + $('input[name="kcaptcha_admin"]').value;
 						}
 						simpleRequest(MODE.prefix+'/kcaptcha/session',
 							function(e) {
@@ -2185,7 +2182,6 @@
 						+ 'ci_t=' + writeForm.querySelector('input[name="ci_t"]').value + '&'
 						+ 'id=' + writeForm.querySelector('input[name="id"]').value + '&'
 						+ 'block_key=' + writeForm.querySelector('input[name="block_key"]').value
-						+ (MODE.minor ? '&sijosae=' + writeForm.querySelector('input[name="sijosae"]').value : '')
 					);
 				},'GET',{"Accept":"text/html,application/xhtml+xml,application/xml,*/*"});
 
